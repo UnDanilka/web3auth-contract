@@ -44,8 +44,5 @@ describe('UserWallet', function () {
         console.log('contract balance end', ethers.utils.formatEther(await ethers.provider.getBalance(userWallet.address)))
         console.log('owner balance end', ethers.utils.formatEther(await ethers.provider.getBalance(owner.address)))
         console.log('receiver balance end', ethers.utils.formatEther(await ethers.provider.getBalance(receiver.address)))
-
-
-
     })
 })
