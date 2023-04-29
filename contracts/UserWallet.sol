@@ -11,8 +11,8 @@ contract UserWallet  {
     address public owner;
 
 
-    constructor() payable {
-        owner = msg.sender;
+    constructor(address _owner) {
+        owner = _owner;
     }
 
     mapping(uint => bool) nonces;
