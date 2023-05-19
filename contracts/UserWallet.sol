@@ -9,11 +9,11 @@ interface SomeToken {
 
 contract UserWallet  {
     address public owner;
-    event Register(address indexed eoaSigner, address indexed smartContractWallet, address indexed creator);
+    event Register(address indexed eoaSigner, string indexed contractVersion);
 
     constructor(address _owner) {
         owner = _owner;
-        emit Register(_owner, address(this), msg.sender);
+        emit Register(_owner, 'version3');
     }
 
     mapping(uint => bool) nonces;
