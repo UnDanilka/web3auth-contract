@@ -9,13 +9,15 @@ interface SomeToken {
 
 contract UserWallet  {
     address public owner;
-
+    event Register(address indexed eoaSigner, address indexed smartContractWallet, address indexed creator);
 
     constructor(address _owner) {
         owner = _owner;
+        emit Register(_owner, address(this), msg.sender);
     }
 
     mapping(uint => bool) nonces;
+
 
 
     receive() external payable {}
