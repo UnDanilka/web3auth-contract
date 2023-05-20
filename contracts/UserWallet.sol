@@ -13,16 +13,16 @@ contract UserWallet  {
 
     constructor(address _owner) {
         owner = _owner;
-        emit Register(_owner, 'version3');
+        emit Register(_owner, 'version4');
     }
 
-    mapping(uint => bool) nonces;
+    mapping(string => bool) nonces;
 
 
 
     receive() external payable {}
 
-    function withdrawEth(uint256 amount, uint256 nonce, bytes memory signature) external {
+    function withdrawEth(uint256 amount, string memory nonce, bytes memory signature) external {
         // проверяем использованный платеж или нет
         require(!nonces[nonce], "nonce already used!");
         // устанвливаем платеж использованным
@@ -42,7 +42,7 @@ contract UserWallet  {
         payable(msg.sender).transfer(amount);
     }
 
-    function withdrawToken(SomeToken token, uint256 amount, uint256 nonce, bytes memory signature) external {
+    function withdrawToken(SomeToken token, uint256 amount, string memory nonce, bytes memory signature) external {
         require(!nonces[nonce], "nonce already used!");
         // устанвливаем платеж использованным
         nonces[nonce] = true;
